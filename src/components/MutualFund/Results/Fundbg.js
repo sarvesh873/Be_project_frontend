@@ -8,7 +8,7 @@ import Checkbox from '@mui/material/Checkbox';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import { useState } from 'react';
 
-const Fund = ({data}) => {
+const Fundbg = ({data}) => {
 
     console.log(data);
 
@@ -45,7 +45,7 @@ const Fund = ({data}) => {
           <img src={item.logo} alt="" style={{ width: '50px', height: '50px', marginRight: '10px' }} />
           <Stack spacing={1} direction="column" style={{ marginLeft: 70 }}>
             <Typography variant="h6" display="block" gutterBottom>
-              {item.parName}
+              {item.scheme_name}
             </Typography>
             <Stack spacing={1} direction="row">
               <Typography variant="overline" display="block" gutterBottom>
@@ -58,16 +58,20 @@ const Fund = ({data}) => {
             {/* Rest of your content */}
             <Stack spacing={8} direction='row'>
                 <Typography variant="overline" display="block" gutterBottom>
-                    AUM 90
+                    AUM {item.assetSizeFor}
                 </Typography>
                 <Typography variant="overline" display="block" gutterBottom>
-                    Min. Invest 90
+                   Ratinng {item.consistencyRating} of 5
                 </Typography>
                 <Typography variant="overline" display="block" gutterBottom>
-                    Current Value    90
+                  Risk : 
+                  {item.rskratpoint.includes('High') && (
+                    <span style={{ color: 'red', fontSize: '1.0em' }}>High </span>
+                    )}
+
                 </Typography>
                 <Typography variant="overline" display="block" gutterBottom>
-                    Return(p.a)    90
+                    Return(p.a)   {item.returnpa}
                 </Typography>
                 
                 <Button variant="outlined" style={{ height: 30, marginRight: 30 , color: '#6200EE', borderColor: '#6200EE',}} onClick={() => fundpage(item.sdWebUrl)}>Invest</Button>
@@ -82,12 +86,11 @@ const Fund = ({data}) => {
                     }}
             />
             <Stack spacing={4} direction='row'>
+                {/* <Typography variant="overline" display="block" gutterBottom>
+                  (#{item.performanceRank}) of {item.performanceRank} in Multi Assets
+                </Typography> */}
                 <Typography variant="overline" display="block" gutterBottom>
-                    
-                    (#{item.performanceRanking.rank}) of {item.performanceRanking.rankOutOf} in Multi Assets
-                </Typography>
-                <Typography variant="overline" display="block" gutterBottom>
-                    Expense Ratio {item.expRatStr}
+                    Expense Ratio {item.expRat}
                 </Typography>
                 <Typography variant="overline" display="block" gutterBottom>
                     Age {item.schemeAge}
@@ -128,4 +131,4 @@ const Fund = ({data}) => {
   )
 }
 
-export default Fund
+export default Fundbg

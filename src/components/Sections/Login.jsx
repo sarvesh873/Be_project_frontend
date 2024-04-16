@@ -1,145 +1,31 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import styled from "styled-components";
-import axios from "axios";
-import { loginUser, registerUser } from "../../api/api";
+import AuthContext from '../../context/AuthContext';
 
 export default function Login() {
-  const [showSignUp, setShowSignUp] = useState(false);
+  const {loginUser} = useContext(AuthContext)
+  const handleSubmit = e => {
+    e.preventDefault()
+    const username = e.target.uname.value
+    const password = e.target.password.value
 
-  const handleToggle = () => {
-    setShowSignUp(!showSignUp);
-  };
+    username.length > 2 && loginUser(username, password)
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    console.log("Form submitted");
-
-    const formData = new FormData(e.target);
-    const requestData = {
-      username: formData.get("uname"),
-      password: formData.get("subject"),
-    };
-    console.log("Request Data:", requestData);
-    try {
-      if (showSignUp) {
-        await registerUser({
-          first_name: formData.get("fname"),
-          last_name: formData.get("lname"),
-          email: formData.get("email"),
-          phone: formData.get("phone"),
-          username: formData.get("uname"),
-          password: formData.get("subject"),
-        });
-      } else {
-        await loginUser(requestData.username, requestData.password);
-      }
-      // Handle successful login or registration here
-    } catch (error) {
-      console.error("Error:", error);
-    }
-  };
+    console.log(username)
+    console.log(password)
+   
+  }
 
   return (
-    <Wrapper id="login">
-      <div className="lightBg">
-        <div className="container">
-          <HeaderInfo>
-            <br />
-            <h1 className="font40 extraBold">Login/ Sign Up</h1>
-            <p className="font13">
-              Unlock the full potential of our platform. <br />
-              Sign up or log in now to access personalized financial insights
-              and expert guidance tailored just for you.
-            </p>
-          </HeaderInfo>
-          <div className="row" style={{ paddingBottom: "30px" }}>
-            <div className="col-xs-12 col-sm-12 col-md-6 col-lg-4">
-              <Form onSubmit={handleSubmit}>
-                {showSignUp && (
-                  <>
-                    <label className="font13">First Name: </label>
-                    <input
-                      type="text"
-                      id="fname"
-                      name="fname"
-                      className="font15 extraBold"
-                    />
-                    <label className="font13">Last Name: </label>
-                    <input
-                      type="text"
-                      id="lname"
-                      name="lname"
-                      className="font15 extraBold"
-                    />
-                    <label className="font13">Email: </label>
-                    <input
-                      type="email"
-                      id="email"
-                      name="email"
-                      className="font15 extraBold"
-                    />
-                    <label className="font13">Phone No.: : </label>
-                    <input
-                      type="text"
-                      id="phone"
-                      name="phone"
-                      className="font15 extraBold"
-                    />
-                  </>
-                )}
-                <label className="font13">Username: </label>
-                <input
-                  type="text"
-                  id="uname"
-                  name="uname"
-                  className="font15 extraBold"
-                />
-                <label className="font13">Password: </label>
-                <input
-                  type="password"
-                  id="subject"
-                  name="subject"
-                  className="font15 extraBold"
-                />
-                <button
-                  type="submit"
-                  value="Submit"
-                  className="pointer animate radius8"
-                  style={{
-                    border: "1px solid #7620ff",
-                    background: "#7620ff",
-                    width: "100%",
-                    padding: "15px",
-                    outline: "none",
-                    color: "#fff",
-                  }}
-                >
-                  {" "}
-                  Submit{" "}
-                </button>
-              </Form>
-              <div>
-                <button
-                  onClick={handleSubmit}
-                  style={{
-                    border: "none",
-                    backgroundColor: "transparent",
-                    marginBottom: "12px",
-                  }}
-                  className="font15 extraBold"
-                >
-                  {showSignUp
-                    ? "Already have an account? Log In"
-                    : "Don't have an account? Sign Up"}
-                </button>
-              </div>
-              {/* <SumbitWrapper className="flex"> */}
-              {/* <button type="submit" value="Submit" className="pointer animate radius8" style={{ maxWidth: "220px" }} > Submit </button> */}
-              {/* </SumbitWrapper> */}
-            </div>
-          </div>
-        </div>
-      </div>
+    <Wrapper>
+      <Form onSubmit={handleSubmit}>
+        <label htmlFor="uname">Username:</label>
+        <input type="text" id="uname" name="uname" />
+        <label htmlFor="password">Password:</label>
+        <input type="password" id="password" name="password" />
+        <button type="submit">Submit</button>
+      </Form>
+
     </Wrapper>
   );
 }

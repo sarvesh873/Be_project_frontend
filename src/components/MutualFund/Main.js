@@ -49,6 +49,7 @@ const Main = () => {
   const [Option, setSelectedOption] = React.useState([]);
   const [data,Setdata] =React.useState([]);
   const [Alldata,SetAlldata]=React.useState([]);
+
   
   useEffect(()=>{
     console.log(Option);
@@ -71,67 +72,7 @@ const Main = () => {
   };
 
 
-  const MF_API='https://web-production-98b9a.up.railway.app/api/all-mf-listing/';
-  
-
-  const getMfData = async(url)=>{
-    
-    try{
-
-    const res= await axios.get(url);
-    const data = await res.data;
-    // console.log(data);
-   
-    } catch (error){
-        console.log('Error in fetching data')
-    }
-};
-
-// ***************************MF Data***************************
-
-
-
-const sendSelectedOptionsToAPI = async () => {
-  try {
-    const Opt=Option[0].pCat;
-    console.log(Opt);
-    const apiUrl = `${MF_API}?pCat=${Opt}`;
-    console.log(apiUrl);
-    const response = await axios.get(apiUrl);
-    Setdata(response.data);
-    console.log("state data",data);
-    console.log('API response:', response.data);
-  } catch (error) {
-    console.error('Error sending data to API:', error);
-  }
-};
-
-
-
-useEffect(()=>{
-  
-const CollectAllData = async () => {
-  try {
-    const Opt=Option[0].pCat;
-    console.log(Opt);
-    const apiUrl = `${MF_API}?pCat=`;
-    console.log(apiUrl);
-    const response = await axios.get(apiUrl);
-    SetAlldata(response.data);
-    console.log("state data",data);
-    console.log('API response:', response.data);
-  } catch (error) {
-    console.error('Error sending data to API:', error);
-  }
-};
-},[])
-
-useEffect(()=>{
-  getMfData(MF_API);
-},[]);
-
-
-// ***************************FD Data***************************
+  // *************************** NO use FD Data***************************
 const FD_API='https://web-production-98b9a.up.railway.app/api/all-fd-listing/';
 
 const getFdDAta = async(url)=>{
@@ -152,7 +93,66 @@ useEffect(()=>{
 },[]);
 
 
+  const MF_API='http://127.0.0.1:8000/api/all-mf-listing/';
+  
 
+  const getMfData = async(url)=>{
+    
+    try{
+
+    const res= await axios.get(url);
+    const data = await res.data;
+    // console.log(data);
+   
+    } catch (error){
+        console.log('Error in fetching data')
+    }
+};
+
+useEffect(()=>{
+  getMfData(MF_API);
+},[]);
+
+
+// ***************************Filter MF Data***************************
+
+
+
+const sendSelectedOptionsToAPI = async () => {
+  try {
+    const Opt=Option[0].pCat;
+    console.log(Opt);
+    const apiUrl = `${MF_API}?pCat=${Opt}`;
+    console.log(apiUrl);
+    const response = await axios.get(apiUrl);
+    Setdata(response.data);
+    console.log("Filter 20 data",data);
+    console.log('API response:', response.data);
+  } catch (error) {
+    console.error('Error sending data to API:', error);
+  }
+};
+
+
+
+// Collect All Data Without Filters
+
+const CollectAllData = async () => {
+  try {
+    const apiUrl = `${MF_API}?pCat=`;
+    console.log(apiUrl);
+    const response = await axios.get(apiUrl);
+    SetAlldata(response.data);
+    console.log("Without Filter Data",Alldata);
+    console.log('API response:', response.data);
+  } catch (error) {
+    console.error('Error sending data to API:', error);
+  }
+};
+
+useEffect(()=>{
+  CollectAllData();
+},[])
 
 
   return (
@@ -170,7 +170,7 @@ useEffect(()=>{
                     <Typography>
                           
                         </Typography>
-                        <Accordion>
+                        <Accordion defaultExpanded>
                           <AccordionSummary
                             expandIcon={<ExpandMoreIcon />}
                             aria-controls="panel1-content"
@@ -219,9 +219,9 @@ useEffect(()=>{
           
           <Grid item xs={6} md={8}>
 
-          {/* {Option.length === 0 ? <Fund data={Alldata} /> : <Fund data={data} />} */}
+          {Option.length === 0 ? <Fund data={Alldata} /> : <Fund data={data} />}
           
-           <Fund data={data}/>
+           {/* <Fund data={data}/> */}
             
             
           </Grid>

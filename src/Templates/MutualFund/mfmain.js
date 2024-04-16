@@ -2,7 +2,7 @@ import React from "react";
 import MutualFundsInfo from "./mfcomponenet2";
 import MutualFundsComponent from "./mfcomponent1";
 import MutualFundAdvantages from "./mfcomponent3";
-import Main from "../components/MutualFund/Main.js";
+import Mainbg from "../../components/MutualFund/Mainbg.js";
 import MFFaqSection from "./mfcomponent5";
 
 const Mfmain = () => {
@@ -11,7 +11,7 @@ const Mfmain = () => {
       <MutualFundsComponent />
       <MutualFundsInfo/>
       <MutualFundAdvantages/>
-      <Main/>
+      <Mainbg/>
       <MFFaqSection />
     </>
   );

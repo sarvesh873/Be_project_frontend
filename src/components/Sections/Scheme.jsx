@@ -42,9 +42,6 @@ export default function Projects() {
   return (
     <Wrapper id="projects">
       <div className="whiteBg">
-        <div>
-          <p className="text-3xl text-red-400">Hello World</p>
-        </div>
         <div className="container">
           <HeaderInfo>
             <h1 className="font40 extraBold">Scheme Details</h1>

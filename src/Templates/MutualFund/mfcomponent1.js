@@ -22,7 +22,8 @@ const MutualFundsComponent = () => {
 };
 
 const allmfs=() =>{
-  window.location.href = "/all-mutual-funds";
+  window.open("/all-mutual-funds", "_blank");
+
 }
 
 // Feature section component
