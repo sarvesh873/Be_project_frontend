@@ -51,23 +51,23 @@ const MainFD = () => {
   const [Alldata,SetAlldata]=React.useState([]);
   
   useEffect(()=>{
-    console.log(Option);
+    // console.log(Option);
   },[Option])
   
   
 
 // ***************************FD Data***************************
-const FD_API = 'https://web-production-98b9a.up.railway.app/api/all-fd-listing/';
+const FD_API = 'http://127.0.0.1:8000/api/all-fd-listing/';
 
 
 const sendSelectedOptionsToAPI = async () => {
   try {
     const apiUrl = `${FD_API}`;
-    console.log(apiUrl);
+    // console.log(apiUrl);
     const response = await axios.get(apiUrl);
     Setdata(response.data);
-    console.log("state data",data);
-    console.log('API response:', response.data);
+    // console.log("state data",data);
+    // console.log('API response:', response.data);
   } catch (error) {
     console.error('Error sending data to API:', error);
   }
@@ -85,6 +85,9 @@ useEffect(() => {
 
     <>
       <Container style={{marginTop:100}}>
+      <Typography variant="h4" gutterBottom align="center">
+          All Fixed Deposit List
+        </Typography>
       
         <Grid container spacing={1}>
 

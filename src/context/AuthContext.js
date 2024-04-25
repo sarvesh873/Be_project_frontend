@@ -3,6 +3,7 @@ import {createContext, useState, useEffect} from "react";
 import { useNavigate } from 'react-router-dom';
 const swal = require('sweetalert2')
 
+
 const AuthContext = createContext();
 
 export default AuthContext;
@@ -24,7 +25,6 @@ export const AuthProvider = ({ children }) => {
 
     const [loading, setLoading] = useState(true);
 
-    const history = useNavigate();
 
     const loginUser = async (username, password) => {
         const response = await fetch("http://127.0.0.1:8000/api/login/", {
@@ -113,25 +113,110 @@ export const AuthProvider = ({ children }) => {
         }
     }
 
-    const logoutUser = () => {
-        setAuthTokens(null)
-        // setUser(null)
-        localStorage.removeItem("authTokens")
-        history.push("/login")
-        swal.fire({
-            title: "YOu have been logged out...",
-            icon: "success",
-            toast: true,
-            timer: 6000,
-            position: 'top-right',
-            timerProgressBar: true,
-            showConfirmButton: false,
-        })
+    const logoutUser = async () => {
+        try {
+            const response = await fetch("http://127.0.0.1:8000/api/logout/", {
+                method: "POST",
+                headers: {
+                    "Authorization": `Bearer ${authTokens.access}`,
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({ refresh: authTokens.refresh })
+            });
+            if (response.status === 204) {
+                console.log("Logged out successfully");
+                setAuthTokens(null);
+                localStorage.removeItem("authTokens");
+                localStorage.clear();
+                navigate("/");
+                swal.fire({
+                    title: "You have been logged out",
+                    icon: "success",
+                    toast: true,
+                    timer: 6000,
+                    position: 'top-right',
+                    timerProgressBar: true,
+                    showConfirmButton: false,
+                });
+            } else {
+                console.error("Logout failed");
+                swal.fire({
+                    title: "Logout failed",
+                    text: "An error occurred while logging out",
+                    icon: "error",
+                    toast: true,
+                    timer: 6000,
+                    position: 'top-right',
+                    timerProgressBar: true,
+                    showConfirmButton: false,
+                });
+            }
+        } catch (error) {
+            console.error("Error logging out:", error);
+            swal.fire({
+                title: "An Error Occurred",
+                text: "Logout failed",
+                icon: "error",
+                toast: true,
+                timer: 6000,
+                position: 'top-right',
+                timerProgressBar: true,
+                showConfirmButton: false,
+            });
+        }
+    }
+
+    const resetPassword = async (email) => {
+        try {
+            const response = await fetch("http://127.0.0.1:8000/api/password-reset/", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({ email })
+            });
+
+            if (response.status === 200) {
+                console.log("Password reset successful");
+                swal.fire({
+                    title: "Password Reset Successful",
+                    icon: "success",
+                    toast: true,
+                    timer: 6000,
+                    position: 'top-right',
+                    timerProgressBar: true,
+                    showConfirmButton: false,
+                });
+            } else {
+                console.error("Password reset failed");
+                swal.fire({
+                    title: "Password Reset Failed",
+                    icon: "error",
+                    toast: true,
+                    timer: 6000,
+                    position: 'top-right',
+                    timerProgressBar: true,
+                    showConfirmButton: false,
+                });
+            }
+        } catch (error) {
+            console.error("Error resetting password:", error);
+            swal.fire({
+                title: "An Error Occurred",
+                text: "Password reset failed",
+                icon: "error",
+                toast: true,
+                timer: 6000,
+                position: 'top-right',
+                timerProgressBar: true,
+                showConfirmButton: false,
+            });
+        }
     }
 
     const contextData = {
         user, 
-        // setUser,
+        resetPassword,
         authTokens,
         setAuthTokens,
         registerUser,

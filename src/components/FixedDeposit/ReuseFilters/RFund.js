@@ -20,15 +20,19 @@ const RFund = ({ onSelectedYearsChange, onSelectedFundChange }) => {
   }
 
   const Years = [
-    createData(1, '1 Month'),
-    createData(2, '3 Month'),
-    createData(3, '6 Month'), 
-    createData(4, '1 Year'),
-    createData(5, '3 Year'),
+    createData(1, '1 yrs'), 
+    createData(2, '2 yrs'), 
+    createData(3, '3 yrs'), 
+    createData(4, '4 yrs'), 
+    createData(5, '5 yrs'), 
+    createData(6, '6 yrs'), 
+    createData(7, '7 yrs'), 
+    createData(8, '8 yrs'), 
+    createData(9, '9 yrs'), 
+    createData(10, '10 yrs')
   ];
 
   const [selectedYear, setSelectedYear] = React.useState(null);
-  const [selectedFund, setSelectedFund] = React.useState('');
 
   const handleYear = (value) => {
     setSelectedYear(prevYear => (prevYear === value ? null : value));
@@ -39,11 +43,6 @@ const RFund = ({ onSelectedYearsChange, onSelectedFundChange }) => {
     return selectedYear === value;
   };
 
-  const handleFund = (event) => {
-    const amount = event.target.value;
-    setSelectedFund(amount);
-    onSelectedFundChange(amount); // Notify parent of selected fund
-  };
 
   return (
     <div style={{ marginTop: '20px' }}> 
@@ -83,32 +82,6 @@ const RFund = ({ onSelectedYearsChange, onSelectedFundChange }) => {
         </Stack>
       </Paper>
 
-      <div style={{ marginBottom: '20px' }}></div>
-      <Paper elevation={3}>
-        <Stack direction='column'>
-          <Accordion>
-            <AccordionSummary
-              expandIcon={<ExpandMoreIcon />}
-              aria-controls='panel1-content'
-              id='panel1-header'
-            >
-              <Typography variant='subtitle2' component='h2'>
-                Funds
-              </Typography>
-            </AccordionSummary>
-            <AccordionDetails>
-              <Stack>
-                <TextField
-                  label='Enter fund amount (less than 1 crore)'
-                  variant='outlined'
-                  value={selectedFund}
-                  onChange={handleFund}
-                />
-              </Stack>
-            </AccordionDetails>
-          </Accordion>
-        </Stack>
-      </Paper>
     </div>
   );
 };

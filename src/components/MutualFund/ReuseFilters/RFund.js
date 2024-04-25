@@ -21,10 +21,12 @@ const RFund = ({ onSelectedYearsChange, onSelectedFundChange }) => {
 
   const Years = [
     createData(1, '1 Month'),
-    createData(2, '3 Month'),
-    createData(3, '6 Month'), 
+    createData(2, '3 Months'),
+    createData(3, '6 Months'), 
     createData(4, '1 Year'),
-    createData(5, '3 Year'),
+    createData(5, '3 Years'),
+    createData(6, '5 Years'),
+    createData(7, '10 Years'),
   ];
 
   const [selectedYear, setSelectedYear] = React.useState(null);

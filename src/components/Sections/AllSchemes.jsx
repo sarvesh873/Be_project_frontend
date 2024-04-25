@@ -6,11 +6,11 @@ import FullButton from "../Buttons/FullButton";
 import TopNavbar from "../Nav/TopNavbar";
 import { useNavigate } from 'react-router-dom';
 // Assets
-import ProjectImg1 from "../../assets/img/projects/1.png";
-import ProjectImg2 from "../../assets/img/projects/2.png";
-import ProjectImg3 from "../../assets/img/projects/3.png";
-import ProjectImg4 from "../../assets/img/projects/4.png";
-import ProjectImg5 from "../../assets/img/projects/5.jpg";
+import ProjectImg1 from "../../assets/img/projects/1.2.jpg";
+import ProjectImg2 from "../../assets/img/projects/2.11.jpg";
+import ProjectImg3 from "../../assets/img/projects/3.1.jpg";
+import ProjectImg4 from "../../assets/img/projects/4.1.jpg";
+import ProjectImg5 from "../../assets/img/projects/5.1.jpg";
 import ProjectImg6 from "../../assets/img/projects/6.jpg";
 import AddImage2 from "../../assets/img/add/add2.png";
 
@@ -97,6 +97,14 @@ export default function AllSchemes() {
                 img={ProjectImg6}
                 title="Public Provident Fund"
                 text="PPF meaning can be simply stated as a long-term investment scheme, popular among individuals who want to earn high but stable returns. Proper safekeeping of the principal amount is the prime target of individuals opening a PPF account."
+                action={() => handlePPF()}
+              />
+            </div>
+            <div className="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+              <ProjectBox
+                img={ProjectImg6}
+                title="Sukanya Samriddhi Yojana"
+                text="The Sukanya Samriddhi Yojana (SSY) is a scheme launched by the government in 2015 as part of the Beti Bachao Beti Padhao campaign to encourage saving for the girl childs future. It is a fixed income investment through which you can make regular deposits and earn interest on it."
                 action={() => handlePPF()}
               />
             </div>

@@ -10,7 +10,7 @@ import { useState } from 'react';
 
 const Fundbg = ({data}) => {
 
-    console.log(data);
+    // console.log(data);
 
 
     const [currentPage, setCurrentPage] = useState(1);
@@ -64,10 +64,16 @@ const Fundbg = ({data}) => {
                    Ratinng {item.consistencyRating} of 5
                 </Typography>
                 <Typography variant="overline" display="block" gutterBottom>
-                  Risk : 
+                  Risk   
                   {item.rskratpoint.includes('High') && (
-                    <span style={{ color: 'red', fontSize: '1.0em' }}>High </span>
-                    )}
+                      <span style={{ color: 'red', fontSize: '1.0em' }}> High </span>
+                  )}
+                  {item.rskratpoint.includes('Medium') && (
+                      <span style={{ color: 'orange', fontSize: '1.0em' }}> Medium </span>
+                  )}
+                  {item.rskratpoint.includes('Low') && (
+                      <span style={{ color: 'green', fontSize: '1.0em' }}> Low </span>
+                  )}
 
                 </Typography>
                 <Typography variant="overline" display="block" gutterBottom>

@@ -5,12 +5,21 @@ import ClientSlider from "../Elements/ClientSlider";
 import ServiceBox from "../Elements/ServiceBox";
 import FullButton from "../Buttons/FullButton";
 // Assets
-import AddImage1 from "../../assets/img/add/1.png";
-import AddImage2 from "../../assets/img/add/2.png";
-import AddImage3 from "../../assets/img/add/3.png";
-import AddImage4 from "../../assets/img/add/4.png";
+import AddImage1 from "../../assets/img/add/1.12.jpg";
+import AddImage2 from "../../assets/img/add/2.22.jpg";
+import AddImage3 from "../../assets/img/add/3.33.jpg";
+import AddImage4 from "../../assets/img/add/4.1.jpg";
+  
+import { useNavigate } from 'react-router-dom';
 
 export default function Services() {
+  const navigate = useNavigate(); // Initialize useNavigate hook
+
+  const navigateToProfile = () => {
+    // Navigate to the profile page
+    navigate('/profile'); // Change '/profile' to the actual path of your profile page
+  };
+
   return (
     <Wrapper id="services">
       <div className="lightBg" style={{ padding: "50px 0" }}>
@@ -34,28 +43,28 @@ export default function Services() {
               <ServiceBox
                 icon="roller"
                 title="Long Term Investment"
-                subtitle=" 'Long term' refers to the extended period of time that an asset is held. Depending on the type of security, a long-term asset can be held for as little as one year or for as long as 10 years or more."
+                subtitle=" 'Long term' investment is a strategic financial approach where individuals allocate funds into assets with the intention of holding them for an extended period, typically five years or more. "
               />
             </ServiceBoxWrapper>
             <ServiceBoxWrapper>
               <ServiceBox
                 icon="monitor"
                 title="Short Term Investment"
-                subtitle="Short-term investments, also known as marketable securities or temporary investments, are financial investments that can easily be converted to cash, typically within 3-12 months."
+                subtitle="Short-term investment involves allocating funds into assets with the expectation of generating returns over a relatively brief period, typically ranging from a few months to a few years and they offer flexibility and the ability to capitalize on short-term market."
               />
             </ServiceBoxWrapper>
             <ServiceBoxWrapper>
               <ServiceBox
                 icon="browser"
                 title="Retirement Planning"
-                subtitle="Retirement planning is a multistep process that evolves over time. To have a comfortable, secure—and fun—retirement, you need to build the financial cushion that will fund it all."
+                subtitle="Retirement planning is the proactive process of preparing for life after retirement by strategically managing finances and investments. It involves setting specific retirement goals, evaluating current financial standing."
               />
             </ServiceBoxWrapper>
             <ServiceBoxWrapper>
               <ServiceBox
                 icon="printer"
                 title="Insurance"
-                subtitle="Insurance is a contract, represented by a policy, in which a policyholder receives financial protection or reimbursement against losses from an insurance company."
+                subtitle="Insurance is a financial product that provides protection against potential losses or risks by transferring the risk to an insurance company in exchange for payment of premiums. It plays a crucial role in managing and mitigating various types of risks that individuals."
               />
             </ServiceBoxWrapper>
           </ServiceBoxRow>
@@ -64,13 +73,10 @@ export default function Services() {
           <div className="container">
             <Advertising className="flexSpaceCenter">
               <AddLeft>
-                <h4 className="font15 semiBold">A few words from us</h4>
-                <h2 className="font40 extraBold">A Study of Creativity</h2>
+                {/* <h4 className="font15 semiBold">A few words from us</h4> */}
+                <h2 className="font40 extraBold">A Personalized Finance Planner</h2>
                 <p className="font12">
-                  Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed
-                  diam nonumy eirmod tempor invidunt ut labore et dolore magna
-                  aliquyam erat, sed diam voluptua. At vero eos et accusam et
-                  justo duo dolores et ea rebum.
+                A Personalized Finance Planner is your trusted ally in navigating the complexities of personal finance. Tailored to your unique goals and circumstances, it offers insightful recommendations, tracks your progress, and provides expert guidance to help you achieve financial success with confidence.
                 </p>
                 <ButtonsRow
                   className="flexNullCenter"
@@ -78,14 +84,14 @@ export default function Services() {
                 >
                   <div style={{ width: "190px" }}>
                     <FullButton
-                      title="Get Started"
-                      action={() => alert("clicked")}
+                      title="Check Now"
+                      action={navigateToProfile}
                     />
                   </div>
                   <div style={{ width: "190px", marginLeft: "15px" }}>
                     <FullButton
                       title="Contact Us"
-                      action={() => alert("clicked")}
+                      to="contact" spy={true} smooth={true} offset={-80} 
                       border
                     />
                   </div>

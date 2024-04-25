@@ -1,84 +1,133 @@
-import React, { useState, useContext } from "react";
-import styled from "styled-components";
-import AuthContext from '../../context/AuthContext';
+import { React, useContext, useState } from "react";
+import "./styles.css";
+import { Link } from 'react-router-dom';
+import AuthContext from "../../context/AuthContext";
 
-export default function Login() {
-  const {loginUser} = useContext(AuthContext)
-  const handleSubmit = e => {
-    e.preventDefault()
-    const username = e.target.uname.value
-    const password = e.target.password.value
+export default function Login()  {
+    const { loginUser } = useContext(AuthContext);
+    const handleSubmit = (e) => {
+      e.preventDefault();
+      const username = e.target.uname.value;
+      const password = e.target.password.value;
 
-    username.length > 2 && loginUser(username, password)
+      username.length > 2 && loginUser(username, password);
 
-    console.log(username)
-    console.log(password)
-   
-  }
-
-  return (
-    <Wrapper>
-      <Form onSubmit={handleSubmit}>
-        <label htmlFor="uname">Username:</label>
-        <input type="text" id="uname" name="uname" />
-        <label htmlFor="password">Password:</label>
-        <input type="password" id="password" name="password" />
-        <button type="submit">Submit</button>
-      </Form>
-
-    </Wrapper>
-  );
+      console.log(username);
+      console.log(password);
+    };
+    return (
+      <html
+        lang="en"
+        className="light-style layout-wide customizer-hide"
+        dir="ltr"
+        data-theme="theme-default"
+        data-assets-path="../assets/"
+        data-template="vertical-menu-template-free"
+      >
+        <body>
+          <div className="container-xxl">
+            <div className="authentication-wrapper authentication-basic container-p-y">
+              <div className="authentication-inner">
+                <div className="card">
+                  <div className="card-body">
+                    <div className="app-brand justify-content-center">
+                      <a href="index.html" className="app-brand-link gap-2">
+                        <span className="app-brand-logo demo">
+                          {/* Your SVG logo code goes here */}
+                        </span>
+                        <span className="app-brand-text demo text-body fw-bold">
+                          FinVise
+                        </span>
+                      </a>
+                    </div>
+                    {/* /Logo */}
+                    <h4 className="mb-2">Welcome to FinVise! 👋</h4>
+                    <p className="mb-4">
+                      Please sign-in to your account and start your Financial
+                      Journey.
+                    </p>
+                    <form
+                      id="formAuthentication"
+                      className="mb-3"
+                      action="index.html"
+                      onSubmit={handleSubmit}
+                    >
+                      <div className="mb-3">
+                        <label htmlFor="uname" className="form-label">
+                          Username
+                        </label>
+                        <input
+                          type="text"
+                          className="form-control"
+                          id="uname"
+                          name="uname"
+                          placeholder="Enter your username"
+                          autoFocus
+                        />
+                      </div>
+                      <div className="mb-3 form-password-toggle">
+                        <div className="d-flex justify-content-between">
+                          <label className="form-label" htmlFor="password">
+                            Password
+                          </label>
+                          <Link to="/forgetpass">
+                            <small>Forgot Password?</small>
+                          </Link>
+                        </div>
+                        <div className="input-group input-group-merge">
+                          <input
+                            type="password"
+                            id="password"
+                            className="form-control"
+                            name="password"
+                            placeholder="&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;"
+                            aria-describedby="password"
+                          />
+                          <span className="input-group-text cursor-pointer">
+                            <i className="bx bx-hide"></i>
+                          </span>
+                        </div>
+                      </div>
+                      <div className="mb-3">
+                        <div className="form-check">
+                          <input
+                            className="form-check-input"
+                            type="checkbox"
+                            id="remember-me"
+                          />
+                          <label
+                            className="form-check-label"
+                            htmlFor="remember-me"
+                          >
+                            {" "}
+                            Remember Me{" "}
+                          </label>
+                        </div>
+                      </div>
+                      <div className="mb-3">
+                        <button
+                          className="btn btn-primary d-grid w-100"
+                          type="submit"
+                          onSubmit={handleSubmit}
+                        >
+                          Sign in
+                        </button>
+                      </div>
+                    </form>
+                    <p className="text-center">
+                      <span>New on our platform?</span>
+                        <Link to="/signup">
+                          <span>Create an account</span>
+                          </Link>
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </body>
+      </html>
+    );
 }
 
-const Wrapper = styled.section`
-  width: 100%;
-  padding: 50px 0;
-`;
-const HeaderInfo = styled.div`
-  margin-bottom: 50px;
-  @media (max-width: 860px) {
-    text-align: center;
-  }
-`;
-const Form = styled.form`
-  padding: 0px 0 30px 0;
-  input,
-  textarea {
-    width: 100%;
-    background-color: transparent;
-    border: 0px;
-    outline: none;
-    box-shadow: none;
-    border-bottom: 1px solid #707070;
-    height: 30px;
-    margin-bottom: 10px;
-  }
-  textarea {
-    min-height: 100px;
-  }
-  @media (max-width: 860px) {
-    padding: 30px 0;
-  }
-`;
-const ButtonInput = styled.input`
-  border: 1px solid #7620ff;
-  background-color: #7620ff;
-  width: 100%;
-  padding: 15px;
-  outline: none;
-  color: #fff;
-  :hover {
-    background-color: #580cd2;
-    border: 1px solid #7620ff;
-    color: #fff;
-  }
-  @media (max-width: 991px) {
-    margin: 0 auto;
-  }
-`;
-const SumbitWrapper = styled.div`
-  @media (max-width: 991px) {
-    width: 100%;
-    margin-bottom: 50px;
-  }
-`;
+

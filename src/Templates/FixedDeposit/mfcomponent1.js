@@ -1,5 +1,5 @@
 import React from "react";
-import { useNavigate } from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
 
 // Define constants for repeated class strings
 const containerClasses = "container mx-auto px-4 py-12";
@@ -7,23 +7,26 @@ const flexCenterClasses = "flex items-center";
 const textColorClasses = "text-zinc-600 dark:text-zinc-300";
 
 // Main component
-const MutualFundsComponent = () => {
+const FDComponent = () => {
   return (
-    <div className="bg-white dark:bg-zinc-800">
-      <div className={containerClasses}>
-        <div className="flex flex-wrap -mx-4 items-center justify-between">
-          <FeatureSection />
-          <ImageSection />
+    <div className="px-10">
+      <div className="bg-white dark:bg-zinc-800 ">
+        <div className={containerClasses}>
+          <div className="flex flex-wrap -mx-4 items-center justify-between">
+            <FeatureSection />
+            <ImageSection />
+          </div>
+          <AdvantagesSection />
         </div>
-        <AdvantagesSection />
       </div>
     </div>
   );
 };
 
-const allmfs=() =>{
-  window.open("/all-fixed-deposit", "_blank");
-}
+
+const allmfs = () => {
+  window.location.href = "/all-fixed-deposit";
+};
 
 // Feature section component
 const FeatureSection = () => {
@@ -31,15 +34,16 @@ const FeatureSection = () => {
     <>
       <div className="w-full px-4 lg:w-1/2 mb-8 lg:mb-0">
         <h2 className="text-3xl font-bold text-zinc-800 dark:text-white mb-4">
-          Invest in Mutual Funds Online
+          Invest in Fixed Deposit Online
         </h2>
         <p className={`${textColorClasses} mb-6`}>
-          Mutual Funds are a smart way to grow your money. They can help you
-          achieve your financial goals as they have the potential to generate
-          higher-than-inflation returns.
+        A fixed deposit or FD is an investment product offered by banks and Non-Banking Finance Companies (NBFCs). In FDs, you invest for a set amount of time and get a fixed interest rate.
         </p>
-        <button className="bg-green-500 text-white px-6 py-2 rounded-md hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-green-700 focus:ring-opacity-50 transition ease-in duration-200" onClick = {()=> allmfs()}>
-          Explore mutual funds
+        <button
+          className="bg-green-500 text-white px-6 py-2 rounded-md hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-green-700 focus:ring-opacity-50 transition ease-in duration-200"
+          onClick={() => allmfs()}
+        >
+          Learn about Fixed Deposit
         </button>
       </div>
     </>
@@ -67,11 +71,11 @@ const AdvantagesSection = () => {
         className={`${flexCenterClasses} mb-4 lg:mb-0`}
         sx={{ alignItems: "center" }}
       >
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-40">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-x-40 py-4">
           {" "}
           {/* Grid container with 3 columns and gap between them */}
           <AdvantageItem
-            title="ET Money Advantages"
+            title="Finvise FD advantage"
             src="https://img.smartspends.com/static/images/etmoneyweb/mfHome/zerocommission.svg"
           />
           <AdvantageItem
@@ -79,7 +83,7 @@ const AdvantagesSection = () => {
             src="https://img.smartspends.com/static/images/etmoneyweb/mfHome/zerocommission.svg"
           />
           <AdvantageItem
-            title="Track your existing portfolio"
+            title="Track your existing Savings"
             src="https://img.smartspends.com/static/images/etmoneyweb/mfHome/track.svg"
           />
           <AdvantageItem
@@ -102,4 +106,4 @@ const AdvantageItem = ({ title, src }) => {
   );
 };
 
-export default MutualFundsComponent;
+export default FDComponent;

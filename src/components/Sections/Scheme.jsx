@@ -5,11 +5,11 @@ import ProjectBox from "../Elements/ProjectBox";
 import FullButton from "../Buttons/FullButton";
 import { useNavigate } from "react-router-dom";
 // Assets
-import ProjectImg1 from "../../assets/img/projects/1.png";
-import ProjectImg2 from "../../assets/img/projects/2.png";
-import ProjectImg3 from "../../assets/img/projects/3.png";
-import ProjectImg4 from "../../assets/img/projects/4.png";
-import ProjectImg5 from "../../assets/img/projects/5.jpg";
+import ProjectImg1 from "../../assets/img/projects/1.2.jpg";
+import ProjectImg2 from "../../assets/img/projects/2.11.jpg";
+import ProjectImg3 from "../../assets/img/projects/3.1.jpg";
+import ProjectImg4 from "../../assets/img/projects/4.1.jpg";
+import ProjectImg5 from "../../assets/img/projects/5.1.jpg";
 import ProjectImg6 from "../../assets/img/projects/6.jpg";
 
 export default function Projects() {

@@ -10,7 +10,7 @@ import { useState } from 'react';
 
 const Fund = ({data}) => {
 
-    console.log(data);
+    // console.log(data);
 
 
     const [currentPage, setCurrentPage] = useState(1);
@@ -57,17 +57,27 @@ const Fund = ({data}) => {
             </Stack>
             {/* Rest of your content */}
             <Stack spacing={8} direction='row'>
-                <Typography variant="overline" display="block" gutterBottom>
-                    AUM 90
+            <Typography variant="overline" display="block" gutterBottom>
+                    AUM {item.assetSizeFor}
                 </Typography>
                 <Typography variant="overline" display="block" gutterBottom>
-                    Min. Invest 90
+                   Ratinng {item.consistencyRating} of 5
                 </Typography>
                 <Typography variant="overline" display="block" gutterBottom>
-                    Current Value    90
+                  Risk   
+                  {item.rskratpoint.includes('High') && (
+                      <span style={{ color: 'red', fontSize: '1.0em' }}> High </span>
+                  )}
+                  {item.rskratpoint.includes('Medium') && (
+                      <span style={{ color: 'orange', fontSize: '1.0em' }}> Medium </span>
+                  )}
+                  {item.rskratpoint.includes('Low') && (
+                      <span style={{ color: 'green', fontSize: '1.0em' }}> Low </span>
+                  )}
+
                 </Typography>
                 <Typography variant="overline" display="block" gutterBottom>
-                    Return(p.a)    90
+                    Return(p.a)   {item.returnpa}
                 </Typography>
                 
                 <Button variant="outlined" style={{ height: 30, marginRight: 30 , color: '#6200EE', borderColor: '#6200EE',}} onClick={() => fundpage(item.sdWebUrl)}>Invest</Button>

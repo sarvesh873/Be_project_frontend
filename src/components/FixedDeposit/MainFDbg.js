@@ -31,63 +31,65 @@ import RFund from './ReuseFilters/RFund';
 const MainFD = () => {
 
 
-    // for creating an object
-    function createData(id, pCat) {
-        return {
-            id,
-            pCat
-        };
-    }
-
-    const FinanceOption = [
-        createData(1, 'EQUITY'),
-        createData(2, 'DEBT'),
-        createData(3, 'HYBRID'),
-    ];
+ 
 
     // ****************************************State for Option**********************************************
-    const [Option, setSelectedOption] = React.useState([]);
+
     const [data, Setdata] = React.useState([]);
     const [Alldata, SetAlldata] = React.useState([]);
 
     useEffect(() => {
-        console.log(Option);
+        // console.log(Option);
     }, [Option])
 
     const [selectedYears, setSelectedYears] = React.useState(null);
-    const [selectedFund, setSelectedFund] = React.useState('');
-    
+    useEffect(() => {
+      sendSelectedOptionsToFD_API();
+  }, []);
 
     const handleSelectedYears = (selectedYears) => {
         setSelectedYears(selectedYears);
-        
+        // console.log("Input selectedYears:", selectedYears);
     };
     
-    const handleSelectedFund = (selectedFund) => {
-        setSelectedFund(selectedFund);
-        console.log('Selected Year:', selectedFund);
-    };
-
-    // ***************************FD Data***************************
-    const FD_API = 'https://web-production-98b9a.up.railway.app/api/all-fd-listing/';
-
-
-    const sendSelectedOptionsToAPI = async () => {
-        try {
-            const apiUrl = `${FD_API}`;
-            console.log(apiUrl);
-            const response = await axios.get(apiUrl);
-            Setdata(response.data);
-            console.log("state data", data);
-            console.log('API response:', response.data);
-        } catch (error) {
-            console.error('Error sending data to API:', error);
-        }
-    };
-
     useEffect(() => {
-        sendSelectedOptionsToAPI();
+        handleSelectedYears();
     }, []);
+
+    const sendSelectedOptionsToFD_API = async () => {
+        try {
+          const FD_API_Post = "http://127.0.0.1:8000/api/fixed_deposit-match/";
+          const input_duration = selectedYears ; // Default to 3 years if selectedYears is null
+          // Other parameters can be set similarly, assuming they are already defined
+      
+          // console.log("Input Duration:", selectedYears);
+          // console.log("Other parameters...");
+      
+          const requestData = {
+            input_duration,
+            // Other parameters...
+          };
+      
+          // Get the bearer token from local storage
+          const authTokens = JSON.parse(localStorage.getItem('authTokens'));
+          const accessToken = authTokens.access;
+      
+          const headers = {
+            'Authorization': `Bearer ${accessToken}`,
+            'Content-Type': 'application/json'
+          };
+      
+          const response = await axios.post(FD_API_Post, requestData, { headers });
+          // console.log('API response:', response.data);
+          Setdata(response.data);
+      
+        } catch (error) {
+          console.error('Error sending data to API:', error);
+        }
+      };
+      
+
+    
 
 
 
@@ -97,14 +99,20 @@ const MainFD = () => {
 
         <>
             <Container style={{ marginTop: 100 }}>
-
+            <Typography variant="h4" gutterBottom align="center">
+          Matching Fixed Deposit List
+        </Typography>
 
                 <Grid container spacing={3}>
                     <Grid item xs={6} md={4}>
+                    <Stack>
+                                            <Stack direction="column">
                         <RFund
                             onSelectedYearsChange={handleSelectedYears}
-                            onSelectedFundChange={handleSelectedFund}
                         />
+                        <Button variant="contained" onClick={sendSelectedOptionsToFD_API}>Filter</Button>
+                        </Stack>
+                                        </Stack>
                     </Grid>
                     <Grid item xs={6} md={8}>
 

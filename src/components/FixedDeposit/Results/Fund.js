@@ -10,7 +10,7 @@ import { useState, useEffect } from 'react';
 
 const Fund = ({ data }) => {
 
-  console.log(data);
+  // console.log(data);
 
 
   const [currentPage, setCurrentPage] = useState(1);
@@ -45,9 +45,7 @@ const Fund = ({ data }) => {
     const endIndex = startIndex + itemsPerPage;
     return (
       <React.Fragment>
-        <Typography variant="h4" gutterBottom align="center">
-          All Fixed Deposit List
-        </Typography>
+        
         {data.slice(startIndex, endIndex).map(item => (
           <React.Fragment key={item.id}>
               <Paper elevation={3} style={{ display: 'flex', alignItems: 'center', padding: '10px', marginBottom: '10px' }}>

@@ -52,7 +52,7 @@ const Main = () => {
 
   
   useEffect(()=>{
-    console.log(Option);
+    // console.log(Option);
   },[Option])
   
   
@@ -72,25 +72,7 @@ const Main = () => {
   };
 
 
-  // *************************** NO use FD Data***************************
-const FD_API='https://web-production-98b9a.up.railway.app/api/all-fd-listing/';
 
-const getFdDAta = async(url)=>{
-  
-  try{
-
-  const res= await axios.get(url);
-  const data = await res.data;
-  // console.log(data);
- 
-  } catch (error){
-      console.log('Error in fetching data')
-  }
-};
-
-useEffect(()=>{
-  getFdDAta(FD_API);
-},[]);
 
 
   const MF_API='http://127.0.0.1:8000/api/all-mf-listing/';
@@ -121,13 +103,13 @@ useEffect(()=>{
 const sendSelectedOptionsToAPI = async () => {
   try {
     const Opt=Option[0].pCat;
-    console.log(Opt);
+    // console.log(Opt);
     const apiUrl = `${MF_API}?pCat=${Opt}`;
-    console.log(apiUrl);
+    // console.log(apiUrl);
     const response = await axios.get(apiUrl);
     Setdata(response.data);
-    console.log("Filter 20 data",data);
-    console.log('API response:', response.data);
+    // console.log("Filter 20 data",data);
+    // console.log('API response:', response.data);
   } catch (error) {
     console.error('Error sending data to API:', error);
   }
@@ -140,11 +122,11 @@ const sendSelectedOptionsToAPI = async () => {
 const CollectAllData = async () => {
   try {
     const apiUrl = `${MF_API}?pCat=`;
-    console.log(apiUrl);
+    // console.log(apiUrl);
     const response = await axios.get(apiUrl);
     SetAlldata(response.data);
-    console.log("Without Filter Data",Alldata);
-    console.log('API response:', response.data);
+    // console.log("Without Filter Data",Alldata);
+    // console.log('API response:', response.data);
   } catch (error) {
     console.error('Error sending data to API:', error);
   }
@@ -159,6 +141,9 @@ useEffect(()=>{
 
     <>
       <Container style={{marginTop:100}}>
+        <Typography variant="h4" gutterBottom align="center">
+          All Mutual Funds List
+        </Typography>
       
         <Grid container spacing={2}>
           

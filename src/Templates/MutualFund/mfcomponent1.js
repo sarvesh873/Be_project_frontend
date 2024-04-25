@@ -72,7 +72,7 @@ const AdvantagesSection = () => {
           {" "}
           {/* Grid container with 3 columns and gap between them */}
           <AdvantageItem
-            title="ET Money Advantages"
+            title="Finvise Mutual Fund advantage"
             src="https://img.smartspends.com/static/images/etmoneyweb/mfHome/zerocommission.svg"
           />
           <AdvantageItem

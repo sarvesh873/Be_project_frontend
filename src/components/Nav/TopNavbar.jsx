@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState , useContext} from "react";
 import styled from "styled-components";
 import { Link } from "react-scroll";
 // Components
@@ -7,12 +7,12 @@ import Backdrop from "../Elements/Backdrop";
 // Assets
 import LogoIcon from "../../assets/svg/Logo";
 import BurgerIcon from "../../assets/svg/BurgerIcon";
-
+import AuthContext from "../../context/AuthContext"; 
 
 export default function TopNavbar() {
   const [y, setY] = useState(window.scrollY);
   const [sidebarOpen, toggleSidebar] = useState(false);
-
+  const { authTokens, logoutUser } = useContext(AuthContext);
   useEffect(() => {
     window.addEventListener("scroll", () => setY(window.scrollY));
     return () => {
@@ -69,17 +69,24 @@ export default function TopNavbar() {
             </li>
           </UlWrapper>
           <UlWrapperRight className="flexNullCenter">
-            <li className="semiBold font15 pointer flexCenter">
-              <a href="/profile" activeClass="active" style={{ padding: "10px 15px" }} to="" spy={true} smooth={true} offset={-80}>
+            {authTokens ? ( // Check if the user is logged in
+              <>
+                <li className="semiBold font15 pointer flexCenter">
+                <a href="/profile" activeClass="active" style={{ padding: "10px 15px" }} to="" spy={true} smooth={true} offset={-80}>
                 My Profile
               </a>
-            </li>
-            <li className="semiBold font15 pointer">
-            <a href="/login"  activeClass="active" style={{ padding: "10px 15px" }} spy={true} smooth={true} offset={-80}>
+                </li>
+                <li className="semiBold font15 pointer">
+                  <button onClick={logoutUser} style={{ padding: "10px 15px", background: "none", border: "none", cursor: "pointer" }}>Log Out</button>
+                </li>
+              </>
+            ) : (
+              <li className="semiBold font15 pointer">
+                <a href="/login"  activeClass="active" style={{ padding: "10px 15px" }} spy={true} smooth={true} offset={-80}>
                 Log In
               </a>
-            
-            </li>
+              </li>
+            )}
           </UlWrapperRight>
         </NavInner>
       </Wrapper>
