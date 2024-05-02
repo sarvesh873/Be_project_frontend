@@ -78,6 +78,8 @@ export default (props) => {
   const [open, setOpen] = useState(false);
   const [state, setState] = useContext(UserContext);
 
+
+
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -204,6 +206,7 @@ export default (props) => {
     const token = JSON.parse(tokenString);
     const decoded = jwtDecode(token.access);
     const jusername = decoded.username;
+    console.log(jusername)
 
     if (username == jusername) {
       const data = {
@@ -257,12 +260,13 @@ export default (props) => {
               title: "Profile Created Successfully",
               icon: "success",
               toast: true,
-              timer: 6000,
+              timer: 3000,
               position: "top-right",
               timerProgressBar: true,
               showConfirmButton: false,
             })
             .then(() => {
+              localStorage.setItem("profileUpdated", "true");
               setCompleted(true);
             });
           console.log("Profile updated successfully:", data);
@@ -276,7 +280,7 @@ export default (props) => {
         title: "Username Did'nt Match",
         icon: "warning",
         toast: true,
-        timer: 6000,
+        timer: 4000,
         position: "top-right",
         timerProgressBar: true,
         showConfirmButton: false,

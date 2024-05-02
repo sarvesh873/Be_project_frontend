@@ -6,8 +6,13 @@ import FullButton from "../Buttons/FullButton";
 import HeaderImage from "../../assets/img/header.png";
 import QuotesIcon from "../../assets/svg/Quotes";
 import Dots from "../../assets/svg/Dots";
-
+import { useNavigate } from 'react-router-dom';
 export default function Header() {
+  const navigate = useNavigate();
+  const navigateToProfile = () => {
+  console.log("idhar")
+    navigate('/profile'); // Change '/profile' to the actual path of your profile page
+  };
   return (
     <Wrapper id="home" className="container flexSpaceCenter">
       <LeftSide className="flexCenter">
@@ -17,7 +22,7 @@ export default function Header() {
           Your One-Stop Financial Companion. Personalized investment suggestions, real-time market insights, and goal-based planning, all in a user-friendly interface. Take control of your financial future today!
           </HeaderP>
           <BtnWrapper>
-            <FullButton title="Get Started" />
+            <FullButton title="Get Started" action={navigateToProfile}/>
           </BtnWrapper>
         </div>
       </LeftSide>

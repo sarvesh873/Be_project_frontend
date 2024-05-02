@@ -12,6 +12,8 @@ import ProjectImg3 from "../../assets/img/projects/3.1.jpg";
 import ProjectImg4 from "../../assets/img/projects/4.1.jpg";
 import ProjectImg5 from "../../assets/img/projects/5.1.jpg";
 import ProjectImg6 from "../../assets/img/projects/6.jpg";
+import ProjectImg7 from "../../assets/img/projects/ssy.png";
+import ProjectImg8 from "../../assets/img/projects/Term-Insurance.jpg";
 import AddImage2 from "../../assets/img/add/add2.png";
 
 export default function AllSchemes() {
@@ -36,6 +38,9 @@ export default function AllSchemes() {
   }
   const handleSSY = () => {
     navigate("/ssy")
+  }
+  const handleterm = () => {
+    navigate("/term-insurance")
   }
 
 
@@ -105,10 +110,19 @@ export default function AllSchemes() {
             </div>
             <div className="col-xs-12 col-sm-4 col-md-4 col-lg-4">
               <ProjectBox
-                img={ProjectImg6}
+                img={ProjectImg7}
                 title="Sukanya Samriddhi Yojana"
                 text="The Sukanya Samriddhi Yojana (SSY) is a scheme launched by the government in 2015 as part of the Beti Bachao Beti Padhao campaign to encourage saving for the girl childs future. It is a fixed income investment through which you can make regular deposits and earn interest on it."
                 action={() => handleSSY()}
+              />
+            </div>
+            <div className="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+              <ProjectBox
+                img={ProjectImg8}
+                title="Term insurance"
+                text="Term insurance is a type of life insurance policy that provides coverage for a specific period, known as the term. Unlike permanent life insurance policies such as whole life or universal life."
+                action={() => handleterm()}
+                imgHeight="205px" 
               />
             </div>
           </div>

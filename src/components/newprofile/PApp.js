@@ -1,12 +1,15 @@
-import React from "react";
+import React, { useEffect }  from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import { Grid } from "@material-ui/core";
 //REGISTER FORM
 import RegisterForm from "./RegisterForm";
 //HEADER
+import { useNavigate } from 'react-router-dom';
 import Typography from "@material-ui/core/Typography";
 //CONTEXT
 import UserContextProvider from "./RegisterForm/UserContext";
+import swal from 'sweetalert2';
+
 const useStyles = makeStyles(theme => ({
   root: {
     minHeight: "100vh",
@@ -39,7 +42,23 @@ const useStyles = makeStyles(theme => ({
 }));
 function PApp() {
   const classes = useStyles();
-  console.log("papp")
+  const navigate = useNavigate();
+  useEffect(() => {
+    const isLoggedIn = localStorage.getItem('authTokens');
+    if (!isLoggedIn) {
+      navigate('/login');
+      swal.fire({
+        title: "Login First",
+        icon: "warning",
+        toast: true,
+        timer: 6000,
+        position: 'top-right',
+        timerProgressBar: true,
+        showConfirmButton: false,
+    })
+    } 
+  }, []);
+  // console.log("papp")
   return (
     
     <UserContextProvider>

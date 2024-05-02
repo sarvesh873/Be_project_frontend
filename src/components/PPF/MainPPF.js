@@ -5,15 +5,15 @@ import Typography from '@mui/material/Typography';
 import Stack from '@mui/material/Stack';
 import Button from '@mui/material/Button';
 import axios from 'axios';
-
+import { useNavigate } from 'react-router-dom';
 import PChart from './Results/PieChart.js';
 import RFund from './ReuseFilters/RFund';
-
+import swal from "sweetalert2";
 const MainPPF = () => {
   const [data, setData] = React.useState([]);
   const [selectedYears, setSelectedYears] = React.useState(null);
   const [selectedFund, setSelectedFund] = React.useState('');
-
+  const navigate = useNavigate();
   const handleSelectedYears = (selectedYears) => {
     setSelectedYears(selectedYears);
     console.log('Input selectedYears:', selectedYears);
@@ -23,6 +23,34 @@ const MainPPF = () => {
     setSelectedFund(selectedFund);
     console.log('Selected Year:', selectedFund);
   };
+  useEffect(() => {
+    const isLoggedIn = localStorage.getItem('authTokens');
+    const hasCreatedProfile = localStorage.getItem('profileUpdated');
+
+    if (!isLoggedIn) {
+      navigate('/login');
+      swal.fire({
+        title: "Login First",
+        icon: "warning",
+        toast: true,
+        timer: 6000,
+        position: 'top-right',
+        timerProgressBar: true,
+        showConfirmButton: false,
+    })
+    } else if (!hasCreatedProfile) {
+      navigate('/profile');
+      swal.fire({
+        title: "Please create your Profile",
+        icon: "warning",
+        toast: true,
+        timer: 6000,
+        position: 'top-right',
+        timerProgressBar: true,
+        showConfirmButton: false,
+    })
+    }
+  }, []);
 
   const sendSelectedOptionsToPPF_API = async () => {
     try {
@@ -51,7 +79,23 @@ const MainPPF = () => {
 
       const response = await axios.post(PPF_API_Post, requestData, { headers });
       console.log('API response:', response.data);
-      setData(response.data);
+
+      if (response.data.message === "You are not eligible for this scheme") {
+        swal.fire({
+          icon: 'error',
+          title: 'Oops!',
+          toast: true,
+          text: response.data.message,
+          timer: 6000,
+          timerProgressBar: true,
+          position: "top-right",
+          showConfirmButton: false,
+        });
+      } else {
+        setData(response.data);
+      }
+
+      // setData(response.data);
     } catch (error) {
       console.error('Error sending data to API:', error);
     }

@@ -11,7 +11,6 @@ import Navbar from "./components/Nav/Navbar.jsx";
 import Footer from "./components/Sections/Footer.jsx";
 import Profile from "./components/Profile/Profile.jsx";
 import AllSchemes from "./components/Sections/AllSchemes.jsx";
-import MutualFunds from "./components/SchemeDetails/MutualFunds.jsx";
 import Mfmain from "./Templates/MutualFund/mfmain.js";
 import Main from "./components/MutualFund/Main.js";
 import MainGold from "./components/Gold/Main.js";

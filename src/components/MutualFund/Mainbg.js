@@ -16,8 +16,38 @@ import FormControlLabel from '@mui/material/FormControlLabel';
 import Checkbox from '@mui/material/Checkbox';
 import Stack from '@mui/material/Stack';
 import Paper from '@mui/material/Paper';
-
+import swal from 'sweetalert2';
+import { useNavigate } from 'react-router-dom';
 const Main = () => {
+    const navigate = useNavigate();
+    useEffect(() => {
+        const isLoggedIn = localStorage.getItem('authTokens');
+        const hasCreatedProfile = localStorage.getItem('profileUpdated');
+    
+        if (!isLoggedIn) {
+          navigate('/login');
+          swal.fire({
+            title: "Login First",
+            icon: "warning",
+            toast: true,
+            timer: 6000,
+            position: 'top-right',
+            timerProgressBar: true,
+            showConfirmButton: false,
+        })
+        } else if (!hasCreatedProfile) {
+          navigate('/profile');
+          swal.fire({
+            title: "Please create your Profile",
+            icon: "warning",
+            toast: true,
+            timer: 6000,
+            position: 'top-right',
+            timerProgressBar: true,
+            showConfirmButton: false,
+        })
+        }
+      }, []);
     const [Option, setSelectedOption] = useState(null);
     const [data, setData] = useState([]);
     const [Alldata, setAlldata] = useState([]);

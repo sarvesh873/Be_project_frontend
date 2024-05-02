@@ -5,15 +5,15 @@ import Typography from '@mui/material/Typography';
 import Stack from '@mui/material/Stack';
 import Button from '@mui/material/Button';
 import axios from 'axios';
-
+import { useNavigate } from 'react-router-dom';
 import PChart from './Results/PieChart.js';
 import RFundssy from './ReuseFilters/RFundssy';
-
+import Swal from "sweetalert2";
 const MainSSY = () => {
   const [data, setData] = React.useState([]);
   const [selectedFund, setSelectedFund] = React.useState(0);
-
-
+  const navigate = useNavigate();
+  const hasCreatedProfile = localStorage.getItem('profileUpdated');
 
   const handleSelectedFund = (selectedFund) => {
     setSelectedFund(selectedFund);
@@ -42,7 +42,23 @@ const MainSSY = () => {
 
       const response = await axios.post(PPF_API_Post, requestData, { headers });
       console.log('API response:', response.data);
-      setData(response.data);
+
+      if (response.data.message === "You are not eligible for this scheme" &&  hasCreatedProfile) {
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops!',
+          toast: true,
+          text: response.data.message,
+          timer: 3000,
+          timerProgressBar: true,
+          position: "top-right",
+          showConfirmButton: false,
+        });
+      } else {
+        setData(response.data);
+      }
+
+      // setData(response.data);
     } catch (error) {
       console.error('Error sending data to API:', error);
     }
@@ -55,7 +71,37 @@ const MainSSY = () => {
   useEffect(() => {
     sendSelectedOptionsToPPF_API();
   }, [selectedFund]);
-  console.log(data)
+
+  useEffect(() => {
+    const isLoggedIn = localStorage.getItem('authTokens');
+    
+
+    if (!isLoggedIn) {
+      navigate('/login');
+      Swal.fire({
+        title: "Login First",
+        icon: "warning",
+        toast: true,
+        timer: 6000,
+        position: 'top-right',
+        timerProgressBar: true,
+        showConfirmButton: false,
+    })
+    } else if (!hasCreatedProfile) {
+      navigate('/profile');
+      Swal.fire({
+        title: "Please create your Profile",
+        icon: "warning",
+        toast: true,
+        timer: 6000,
+        position: 'top-right',
+        timerProgressBar: true,
+        showConfirmButton: false,
+    })
+    }
+  }, []);
+
+  // console.log(data)
   return (
     <>
       <Container style={{ marginTop: 100, marginBottom: 100 }}>

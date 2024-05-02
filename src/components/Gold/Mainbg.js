@@ -24,14 +24,42 @@ import Stack from '@mui/material/Stack';
 import Paper from '@mui/material/Paper';
 import axios from "axios";
 
-
-
+import swal from 'sweetalert2';
+import { useNavigate } from 'react-router-dom';
 // Testing
 import RFund from './ReuseFilters/RFund';
 
 const Mainbg = () => {
 
-
+    const navigate = useNavigate();
+    useEffect(() => {
+        const isLoggedIn = localStorage.getItem('authTokens');
+        const hasCreatedProfile = localStorage.getItem('profileUpdated');
+    
+        if (!isLoggedIn) {
+          navigate('/login');
+          swal.fire({
+            title: "Login First",
+            icon: "warning",
+            toast: true,
+            timer: 6000,
+            position: 'top-right',
+            timerProgressBar: true,
+            showConfirmButton: false,
+        })
+        } else if (!hasCreatedProfile) {
+          navigate('/profile');
+          swal.fire({
+            title: "Please create your Profile",
+            icon: "warning",
+            toast: true,
+            timer: 6000,
+            position: 'top-right',
+            timerProgressBar: true,
+            showConfirmButton: false,
+        })
+        }
+      }, []);
 
 
     const riskOptions = [
@@ -72,7 +100,6 @@ const Mainbg = () => {
             setSelectedRisk(prevSelected => prevSelected.filter(item => item.id !== id));
         }
     };
-
 
 
 
