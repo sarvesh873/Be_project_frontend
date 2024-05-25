@@ -7,6 +7,7 @@ import { faLinkedin, faDropbox } from "@fortawesome/free-brands-svg-icons";
 import Yamini from "./ProfilePhoto/Yamini_Photo.jpeg"
 import Sarvesh from "./ProfilePhoto/Sarvesh_Photo.jpeg"
 import Ayush from "./ProfilePhoto/Ayush_Photo.jpeg"
+import Guide from "./ProfilePhoto/Nilesh_Sir_photo.jpg"
 
 export default function Team() {
   return (
@@ -58,9 +59,9 @@ export default function Team() {
           <TeamMember
             name="Nilesh Shirude"
             title="Project Guide"
-            imgSrc="https://media.licdn.com/dms/image/D4D03AQGKP2bo0vbGOg/profile-displayphoto-shrink_400_400/0/1711526183267?e=1721865600&v=beta&t=48mpONw7ZBNYK2RmsI62vyxjp53OHF8eFhRn3g7Fn7c"
+            imgSrc={Guide}
             socialLinks={[
-              "mailto:nilesh@example.com",
+              "mailto:nsshirude@pict.edu",
               "https://www.linkedin.com/in/nilesh-shirude/",
             ]}
           />

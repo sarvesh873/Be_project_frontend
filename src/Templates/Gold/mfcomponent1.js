@@ -27,9 +27,11 @@ const GoldComponent = () => {
 // ..
 // ..
 // ..
-const allmfs = () => {
-  window.location.href = "/all-gold";
-};
+
+const allmfs=() =>{
+  window.open("/all-gold", "_blank");
+
+}
 
 // Feature section component
 const FeatureSection = () => {

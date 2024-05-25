@@ -24,9 +24,10 @@ const FDComponent = () => {
 };
 
 
-const allmfs = () => {
-  window.location.href = "/all-fixed-deposit";
-};
+const allmfs=() =>{
+  window.open("/all-fixed-deposit", "_blank");
+
+}
 
 // Feature section component
 const FeatureSection = () => {

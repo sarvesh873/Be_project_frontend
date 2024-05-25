@@ -40,7 +40,7 @@ const FeatureSection = () => {
         </p>
         <button
           className="bg-green-500 text-white px-6 py-2 rounded-md hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-green-700 focus:ring-opacity-50 transition ease-in duration-200"
-          onClick={() => allmfs()}
+          // onClick={() => allmfs()}
         >
           Know about health insurance
         </button>

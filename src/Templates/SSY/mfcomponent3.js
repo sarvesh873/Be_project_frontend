@@ -10,13 +10,13 @@ const buttonClass = 'text-xl mx-2';
 // Carousel item data
 const items = [
   {
-    imgSrc: 'https://img.smartspends.com/static/images/etmoneyweb/mfHome/professionally-managed.svg',
+    imgSrc: 'https://img.smartspends.com/static/images/etmoneyweb/mfHome/higher-returns.svg',
     altText: 'Interest Rate',
     title: 'Interest Rate',
     description: ' The scheme offers attractive interest rates, which are set by the government and revised quarterly. The interest rate is typically higher than other small savings schemes.',
   },
   {
-    imgSrc: 'https://placehold.co/100x100',
+    imgSrc: 'https://img.smartspends.com/static/images/etmoneyweb/mfHome/diversification.svg',
     altText: 'Minimum and Maximum Deposit',
     title: 'Minimum and Maximum Deposit',
     description: 'The minimum deposit amount required to open an SSY account is low, making it accessible to parents from all income groups. However, there is a maximum annual contribution limit per account.',
@@ -28,13 +28,13 @@ const items = [
     description: 'The parent or legal guardian acts as the depositor and manages the SSY account on behalf of the girl child until she reaches adulthood.',
   },
   {
-    imgSrc: 'https://img.smartspends.com/static/images/etmoneyweb/mfHome/professionally-managed.svg',
+    imgSrc: 'https://img.smartspends.com/static/images/etmoneyweb/mfHome/affordability.svg',
     altText: 'Girl Childs Identity Proof',
     title: 'Girl Childs Identity Proof',
     description: ' Documents such as birth certificate and identity proof of the girl child are required to open an SSY account.',
   },
   {
-    imgSrc: 'https://img.smartspends.com/static/images/etmoneyweb/mfHome/professionally-managed.svg',
+    imgSrc: 'https://img.smartspends.com/static/images/etmoneyweb/mfHome/liquidity.svg',
     altText: 'Tax Benefits',
     title: 'Tax Benefits',
     description: 'Contributions made towards the SSY account are eligible for tax deductions under Section 80C of the Income Tax Act, up to a specified limit.',

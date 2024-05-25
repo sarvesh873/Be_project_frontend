@@ -16,31 +16,26 @@ const items = [
     description: 'One of the key benefits of investing in these funds is that your money is managed by professional money managers who have years of investing experience.',
   },
   {
-    imgSrc: 'https://placehold.co/100x100',
+    imgSrc: 'https://img.smartspends.com/static/images/etmoneyweb/mfHome/liquidity.svg',
     altText: 'Liquidity',
     title: 'Liquidity',
     description: 'It is the ease of buying and selling an investment. Mutual Funds offer superior liquidity compared to some of the other instruments as you can buy and sell them anytime you want.',
   },
   {
-    imgSrc: 'https://img.smartspends.com/static/images/etmoneyweb/mfHome/professionally-managed.svg',
+    imgSrc: 'https://img.smartspends.com/static/images/etmoneyweb/mfHome/higher-returns.svg',
     altText: 'Returns',
     title: 'Returns',
     description: 'Like any investment product, the performance of these funds are measured in terms of the kind of returns they deliver. Historically, mutual fund returns have been higher than the investment options like Bank FDs, RDs, PPF, etc.',
   },
   {
-    imgSrc: 'https://img.smartspends.com/static/images/etmoneyweb/mfHome/professionally-managed.svg',
+    imgSrc: 'https://img.smartspends.com/static/images/etmoneyweb/mfHome/affordability.svg',
     altText: 'Affordability',
     title: 'Affordability',
     description: 'You can start your investments in these funds with as low as ₹500. Therefore, you donot need large sums to start investing.',
   },
+  
   {
-    imgSrc: 'https://img.smartspends.com/static/images/etmoneyweb/mfHome/professionally-managed.svg',
-    altText: 'Diversification',
-    title: 'Diversification',
-    description: 'As mutual funds invest in a basket of stocks, bonds, etc., you can own a diversified portfolio even with a small investment amount, this helps reduce risk as well.',
-  },
-  {
-    imgSrc: 'https://img.smartspends.com/static/images/etmoneyweb/mfHome/professionally-managed.svg',
+    imgSrc: 'https://img.smartspends.com/static/images/etmoneyweb/mfHome/diversification.svg',
     altText: 'Diversification',
     title: 'Diversification',
     description: 'As mutual funds invest in a basket of stocks, bonds, etc., you can own a diversified portfolio even with a small investment amount, this helps reduce risk as well.',

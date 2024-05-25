@@ -16,19 +16,19 @@ const answerClasses = "px-4 pb-4 text-zinc-600 dark:text-zinc-400";
 const faqs = [
   {
     question: "What is a Mutual Fund & How Does it work?",
-    answer: "Content for the first question goes here...",
+    answer: "Mutual funds is a trust that pools investors' money. Investors are allotted units of the funds as per their share of investment in the pool of assets. This money is then invested across various types of mutual funds like equity, debt, and other securities by the fund manager appointed by the asset management company.",
   },
   {
     question: "How to choose a good mutual fund investment?",
-    answer: "Content for the second question goes here...",
+    answer: "There is no straight answer to this question. Different funds have different risk-return profiles. You need to choose a fund based on your risk-taking capabilities and the time horizon you have in your mind for the investment. So, you need to find a balance between your risk tolerance and the risk of the fund you are planning to invest in. For example, if you are willing to take high risk but your investment horizon is less than 3 years, you shouldn't invest fully in equity funds.",
   },
   {
     question: "How are mutual funds withdrawals taxed?",
-    answer: "Content for the third question goes here...",
+    answer: "On withdrawal, if your redemption value is higher than the purchase price of a mutual fund, the same will be classified as capital gains. The gains from both equity (above a threshold limit) and debt funds are taxable. The gains are classified as short-term capital gains (STCG) or long-term capital gains, depending on the holding period.",
   },
   {
     question: "How can I invest in mutual funds on ET Money?",
-    answer: "Content for the fourth question goes here...",
+    answer: "You can use Etmoney website or download ET Money mobile app to start investing in mutual funds on ET Money",
   },
 ];
 

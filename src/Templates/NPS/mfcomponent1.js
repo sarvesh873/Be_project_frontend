@@ -23,9 +23,10 @@ const NPSComponent = () => {
   );
 };
 
-const allmfs = () => {
-  window.location.href = "/all-nps";
-};
+const allmfs=() =>{
+  window.open("/all-nps", "_blank");
+
+}
 
 // Feature section component
 const FeatureSection = () => {
