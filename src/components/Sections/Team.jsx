@@ -58,10 +58,10 @@ export default function Team() {
           <TeamMember
             name="Nilesh Shirude"
             title="Project Guide"
-            imgSrc="https://media.licdn.com/dms/image/D4D03AQGKP2bo0vbGOg/profile-displayphoto-shrink_400_400/0/1711526183267?e=1718841600&v=beta&t=3VKpqwxiXl-J4TPtnd6CTXqhyIGTBLTzQnBwCjd0tkw"
+            imgSrc="https://media.licdn.com/dms/image/D4D03AQGKP2bo0vbGOg/profile-displayphoto-shrink_400_400/0/1711526183267?e=1721865600&v=beta&t=48mpONw7ZBNYK2RmsI62vyxjp53OHF8eFhRn3g7Fn7c"
             socialLinks={[
               "mailto:nilesh@example.com",
-              "https://www.linkedin.com/in/nileshshirude",
+              "https://www.linkedin.com/in/nilesh-shirude/",
             ]}
           />
         </div>
